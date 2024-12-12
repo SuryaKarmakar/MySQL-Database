@@ -16,6 +16,10 @@ emp_dob DATE
 -- VALUES (value1, value 2);
 INSERT INTO employee
 VALUES(1, "Surya Karmakar", "Software Developer", 1000, "1999-12-14");
+
+INSERT INTO employee
+VALUES(3, "Avijit Mondal", "Software Developer", 2000, "1988-05-25", "8765456786");
+
 -- Insert data into a specific coloumn
 INSERT INTO employee(emp_no, emp_name, emp_dob)
 VALUES(2, "Gourav Sarkar", "1970-05-25");
@@ -34,4 +38,34 @@ DROP TABLE employee;
 -- ALTER TABLE <tablename>
 -- ADD <coloumn_name> data_type
 ALTER TABLE employee
-ADD phone_no INT;
+MODIFY phone_no VARCHAR(10);
+
+# Select statement. ---------------------------------------------
+-- SELECT <column_list>  
+-- FROM <table_list> 
+-- WHERE <search_criteria> 
+
+-- An asterisk (*) is used to retrieve all columns from the table
+SELECT * FROM employee;
+
+SELECT emp_name, emp_dob
+FROM employee
+WHERE salary > 500;
+
+# Subquery ---------------------------------------------
+-- SELECT <column_list>  
+-- FROM <table_list> 
+-- WHERE <search_criteria>
+-- (SELECT <column_list>  
+-- FROM <table_list> 
+-- WHERE <search_criteria>)
+
+-- The inner query is executed firstly and then the result is followed by the outer query.
+-- Display the employees whose designation is the same as that of employee 1 
+SELECT * FROM employee
+WHERE designation = (
+SELECT designation FROM employee
+WHERE emp_no = 1
+);
+
+SET SQL_SAFE_UPDATES = 0;
