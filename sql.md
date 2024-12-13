@@ -16,9 +16,10 @@ emp_dob DATE
 -- VALUES (value1, value 2);
 INSERT INTO employee
 VALUES(1, "Surya Karmakar", "Software Developer", 1000, "1999-12-14");
-
 INSERT INTO employee
 VALUES(3, "Avijit Mondal", "Software Developer", 2000, "1988-05-25", "8765456786");
+INSERT INTO employee
+VALUES(4, "Rohan", "Web Developer", 1400, "1988-03-17", "7656765678");
 
 -- Insert data into a specific coloumn
 INSERT INTO employee(emp_no, emp_name, emp_dob)
@@ -67,5 +68,28 @@ WHERE designation = (
 SELECT designation FROM employee
 WHERE emp_no = 1
 );
+
+# Funcation. ---------------------------------------------
+-- COUNT
+SELECT COUNT(*)
+FROM employee;
+
+-- SUM, AVG, MAX, MIN
+SELECT SUM(salary) AS total_salary,
+MAX(salary) AS maximum_salary,
+MIN(salary) AS minimum_salary,
+AVG(salary) AS avarage_salary
+FROM employee;
+
+# Grouping multiple column. ---------------------------------------------
+SELECT designation, SUM(salary) AS total_salary, COUNT(*) AS total_row
+FROM employee
+GROUP BY designation;
+
+# Update row. ---------------------------------------------
+-- UPDATE table_name SET attribute = newvalue WHERE condition; 
+UPDATE employee 
+SET designation = "Team Lead", salary = 3000
+WHERE emp_no = 2;
 
 SET SQL_SAFE_UPDATES = 0;
