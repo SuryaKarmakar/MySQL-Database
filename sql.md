@@ -92,4 +92,16 @@ UPDATE employee
 SET designation = "Team Lead", salary = 3000
 WHERE emp_no = 2;
 
+# Views. ---------------------------------------------
+-- CREATE VIEW <view name> 
+-- AS <query>; 
+CREATE VIEW view_emp
+AS SELECT emp_no, emp_name FROM employee;
+
+SELECT * FROM view_emp;
+
+INSERT INTO view_emp
+VALUES(5, "Ratul");
+
+SELECT * FROM employee;
 SET SQL_SAFE_UPDATES = 0;
