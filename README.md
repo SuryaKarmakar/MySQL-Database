@@ -84,4 +84,3 @@ DELETE FROM employee WHERE id = 3;
 # delete all rows
 DELETE FROM employee;
 ```
-
