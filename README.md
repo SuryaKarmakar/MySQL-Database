@@ -14,7 +14,7 @@ USE company;
 
 # create table
 CREATE TABLE employee(
-	id INT,
+    id INT,
     name VARCHAR(20),
     address VARCHAR(100)
 );
@@ -53,7 +53,7 @@ CREATE DATABASE company;
 USE company;
 
 CREATE TABLE employee(
-	id INT,
+    id INT,
     name VARCHAR(10),
     age INT,
     address VARCHAR(100),
