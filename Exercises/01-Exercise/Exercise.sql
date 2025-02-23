@@ -3,7 +3,7 @@ CREATE DATABASE muj_institute;
 USE muj_institute;
 
 CREATE TABLE computer_dept(
-	student_id VARCHAR(10),
+    student_id VARCHAR(10),
     student_name VARCHAR(20),
     sex CHAR(1),
     phone_no VARCHAR(10),
@@ -13,7 +13,7 @@ CREATE TABLE computer_dept(
 );
 
 CREATE TABLE electronics_dept(
-	student_id VARCHAR(10),
+    student_id VARCHAR(10),
     student_name VARCHAR(20),
     sex CHAR(1),
     phone_no VARCHAR(10),
@@ -23,7 +23,7 @@ CREATE TABLE electronics_dept(
 );
 
 CREATE TABLE mechanical_dept(
-	student_id VARCHAR(10),
+    student_id VARCHAR(10),
     student_name VARCHAR(20),
     sex CHAR(1),
     phone_no VARCHAR(10),
@@ -97,10 +97,8 @@ DELETE FROM mechanical_dept WHERE marks < 85 LIMIT 1;
 DROP TABLE mechanical_dept;
 
 # Get the table with only two columns: name and age.
-SELECT student_name,
-       TIMESTAMPDIFF(YEAR, date_of_birth, CURDATE()) AS age
+SELECT student_name, TIMESTAMPDIFF(YEAR, date_of_birth, CURDATE()) AS age
 FROM computer_dept;
 
-SELECT student_name,
-       TIMESTAMPDIFF(YEAR, date_of_birth, CURDATE()) AS age
+SELECT student_name, TIMESTAMPDIFF(YEAR, date_of_birth, CURDATE()) AS age
 FROM electronics_dept;
