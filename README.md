@@ -64,13 +64,21 @@ DESC employee;
 
 # insert data into table
 INSERT INTO employee
-VALUE(1, "abc", 25, "New Delhi", 5);
+VALUE(1, "Alice", 25, "123 Main St", 1);
+
+# insert data into specific attribute
+INSERT INTO employee (id, name, age, dept_no)
+VALUE(2, "David", 26, 2);
+
+# insert NULL value
+INSERT INTO employee
+VALUE(3, "Eva", NULL, NULL, 2);
 
 # insert multiple data
 INSERT INTO employee
 VALUES
-(2, "xyz", 27, "Mumbai", 7),
-(3, "pqr", 30, "Kolkata", 5);
+(4, "Bob", 27, "456 Elm St", 7),
+(5, "Charlie", 30, "789 Oak St", 5);
 
 # read all data
 SELECT * FROM employee;
