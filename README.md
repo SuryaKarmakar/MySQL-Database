@@ -92,3 +92,41 @@ DELETE FROM employee WHERE id = 3;
 # delete all rows
 DELETE FROM employee;
 ```
+
+## Basic Select Query:
+
+```sql
+-- the ORDER BY is used to sort the result-set in ascending or descending order. by default its use ascending order.
+USE collage;
+SELECT * FROM student;
+
+SELECT * FROM student ORDER BY avg_m ASC;
+SELECT * FROM student ORDER BY avg_m DESC;
+
+-- AND and OR operators are used to filter records based on more than one condition.
+SELECT * FROM student WHERE avg_m > 50 AND total > 150;
+SELECT * FROM student WHERE avg_m > 80 OR total > 100;
+SELECT * FROM student WHERE NOT class = "first";
+
+-- MIN fuction returns the smallest value and MAX returns the largest value.
+SELECT MAX(avg_m) FROM student;
+SELECT MIN(avg_m) FROM student;
+
+-- LIKE operator is used in a WHERE clause to search for a specified pattern in a column.
+-- % represents zero, one or multiple character.
+-- _ represents one or single character.
+SELECT * FROM student WHERE s_name LIKE 'A%'; -- start with A
+SELECT * FROM student WHERE s_name LIKE '%e'; -- end with e
+SELECT * FROM student WHERE s_name LIKE 'J%n'; -- stared with J and ended with n
+SELECT * FROM student WHERE s_name LIKE '%hn%'; -- hn in any position
+SELECT * FROM student WHERE s_name LIKE '____________%'; -- name should be atlest 12 character or more
+
+-- IN operator allows you to specify multiple values in a WHERE clause.
+-- IN operator is a shorthand for multiple OR conditions.
+SELECT * FROM student WHERE s_name IN('John Doe', 'Alice Smith');
+
+-- BETWEEN operator selects values within a given range. the values can be numbers, text or dates.
+-- BETWEEN operator is inclusive begin and end values are included.
+SELECT * FROM student WHERE total BETWEEN 150 AND 200;
+
+```
