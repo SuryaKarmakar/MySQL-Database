@@ -232,3 +232,31 @@ Example:
 ```sql
 Update Student set name='Ankita' where name ='Ankit';
 ```
+
+- Delete Command:
+
+The DELETE statement is used to delete existing records in a table.
+
+Syntax:
+
+DELETE FROM table_name WHERE condition;
+
+Example:
+
+```sql
+Delete from Student where Roll_no =106;
+```
+
+- Drop Command:
+
+The DROP TABLE statement is used to drop an existing table in a database.
+
+Syntax:
+
+DROP TABLE table_name;
+
+Example:
+
+```sql
+Drop Table Student;
+```
