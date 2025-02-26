@@ -598,3 +598,38 @@ dbms_output.put_line(' Square of (23): ' || a);
 
 END;
 ```
+
+- Functions in PI/SQL:
+
+A function is same as a procedure except that it returns a value. Therefore, all the discussions of the previous chapter are true for functions too.
+
+Syntax:
+
+FUNCTION function*name
+[(parameter_name [IN | OUT | IN OUT] type I,...)]
+RETURN return_datatype
+{IS | AS} BEGIN
+< function_body >
+END [function* \_name];
+
+```sql
+declare
+
+Result number;
+
+function add_fun(a number,b number)
+
+return number as c number;
+
+begin c:=a+b;
+
+return c; end;
+
+Begin
+
+Result := add_fun(10,20);
+
+Dbms_output.put_line('the sum of 10 and 20 is' || result);
+
+End;
+```
