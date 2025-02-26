@@ -260,3 +260,19 @@ Example:
 ```sql
 Drop Table Student;
 ```
+
+- Distinct:
+
+The SELECT DISTINCT statement is used to retrieve unique values from a specific column in a table. It eliminates duplicate rows and returns only distinct values.
+
+Syntax:
+
+SELECT DISTINCT column1, column2, ...
+FROM table_name
+WHERE condition;
+
+Example:
+
+```sql
+select distinct age from student;
+```
