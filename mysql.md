@@ -111,3 +111,25 @@ select name, Roll_no from Student where age=34 OR marks=78;
 select name, Roll_no from Student where age=34 And marks=78;
 Select * from Student where not marks=98;
 ```
+
+- Min() and Max() functions:
+
+1. The MIN() function returns the smallest value of the selected column.
+2. The MAX() function returns the largest value of the selected column.
+
+Syntax:
+
+SELECT MIN(coLumn_name)
+FROM table_name
+WHERE condition;
+
+SELECT MAX(column_name)
+FROM table_name
+WHERE condition;
+
+Example:
+
+```sql
+select min(age) from Student;
+Select max(age) from Student;
+```
