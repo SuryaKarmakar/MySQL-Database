@@ -216,3 +216,19 @@ Example:
 ALTER TABLE Student
 MODIFY COLUMN Age VARCHAR(10);
 ```
+
+- Update:
+
+The UPDATE statement is used to modify the existing records in a table.
+
+Syntax:
+
+UPDATE table_name
+SET column1 = value1, column2 = value 2, ...
+WHERE condition;
+
+Example:
+
+```sql
+Update Student set name='Ankita' where name ='Ankit';
+```
