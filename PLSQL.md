@@ -374,3 +374,125 @@ END LOOP;
 
 END;
 ```
+
+- Strings in PLSQL:
+
+The string in PL/SQL is actually a sequence of characters with an optional size specification. The characters could be numeric, letters, blank, special characters or a combination of all. PL/SQL offers three kinds of strings —
+
+1. Fixed-length strings - In such strings, programmers specify the length while declaring the string. The string is right-padded with spaces to the length so specified.
+
+2. Variable-length strings - In such strings, a maximum length up to 32,767, for the string is specified and no padding takes place.
+
+3. Character large objects (CLOBs) - These are variable-length strings that can be up to 128 terabytes.
+
+4. PL/SQL strings could be either variables or literals. A string literal is enclosed within quotation marks. For example, 'This is a string literal.' Or 'hello world'.
+
+```sql
+DECLARE
+
+name varchar2(20);
+
+company varchar2(30);
+
+introduction clob;
+
+choice char (1);
+
+BEGIN
+
+name := 'John Smith';
+
+company := 'Infotech';
+
+introduction:= 'Hello! I"m John Smith from Infotech.';
+
+choice := 'y';
+
+IF choice = 'y' THEN
+
+dbms_output.put_line(name);
+
+dbms_output.put_line(company);
+
+dbms_output.put_line(introduction);
+
+END IF;
+
+END;
+```
+
+ASCII(x) - Returns the ASCII value of the character x.
+
+CHR(x) - Returns the character with the ASCII value of x.
+
+CONCAT(x, y) - Concatenates the strings x and y and returns the appended string.
+
+INITCAP(x) - Converts the initial letter of each word in x to uppercase and returns that string.
+
+INSTR(x, find_string [, start] [, occurrence]) - Searches for find_string in x and returns the position at which it occurs.
+
+INSTRB(x) - Returns the location of a string within another string, but returns the value in bytes.
+
+LENGTH(x) - Returns the number of characters in x.
+
+LENGTHB(x) - Returns the length of a character string in bytes for single byte character set.
+
+LOWER(x) - Converts the letters in x to lowercase and returns that string.
+
+LPAD(x, width, [pad _string]) - Pads x with spaces to the left, to bring the total length of the string up to width characters.
+
+LTRIM(x L, [trim_string]) - Trims characters from the left of x.
+
+NANVL(x, value) - Returns value if x matches the NaN special value (not a number), otherwise x is returned.
+
+NLS_INITCAP(x) - Same as the INITCAP function except that it can use a different sort method as specified by NLSSORT.
+
+NLS_LOWER(x) - Same as the LOWER function except that it can use a different sort method as specified by NLSSORT.
+
+NLS_UPPER(x) - Same as the UPPER function except that it can use a different sort method as specified by NLSSORT.
+
+REPLACE(x, search_string, replace_string) - Searches x for search_string and replaces it with replace_string.
+
+RPAD(x, width [, pad_string]) - Pads x to the right.
+
+RTRIM(x [, trim_string]) - Trims x from the right.
+
+SUBSTR(x, start [, length]) - Returns a substring of x that begins at the position specified by start. An optional length for the substring may be supplied.
+
+SUBSTRB(x) - Same as SUBSTR except that the parameters are expressed in bytes instead of characters for the single-byte character systems.
+
+TRIM([trim_char] FROM x) - Trims characters from the left and right of x.
+
+UPPER(x) - Converts the letters in x to uppercase and returns that string.
+
+```sql
+DECLARE
+
+greetings varchar2(11) := 'hello world';
+
+BEGIN dbms_output.put_line(UPPER(greetings));
+
+dbms_output.put_line(LOWER(greetings));
+
+dbms_output.put_line(INITCAP(greetings));
+
+/* retrieve the first character in the string */ dbms_output.put_line (SUBSTR (greetings, 1, 1));
+
+/* retrieve the last character in the string */ dbms_output.put_line ( SUBSTR (greetings, -1, 1));
+
+/* retrieve five characters,
+
+starting from the seventh position. */
+
+dbms_output.put_line(SUBSTR (greetings, 7, 5));
+
+/* retrieve the remainder of the string, starting from the second position.*/
+
+dbms_output.put_line( SUBSTR (greetings, 2));
+
+/* find the location of the first "e" */
+
+dbms_output.put_line(INSTR (greetings, 'e'));
+
+END;
+```
