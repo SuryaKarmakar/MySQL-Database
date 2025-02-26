@@ -317,3 +317,23 @@ Example:
 ```sql
 Select * from Student group by age having age=34;
 ```
+
+- Foreign Key:
+
+A FOREIGN KEY is a field (or collection of fields) in one table, that refers to the PRIMARY KEY in another table. The table with the foreign key is called the child table, and the table with the primary key is called the referenced or parent table.
+
+Syntax:
+
+Create Table table_name (column 1, column 2....)
+Foreign key(column_name) References Table Name(column name of Primary key)
+
+Example:
+
+```sql
+Create table S_course(
+    cid integer primary key,
+    cname char(20),
+    Roll_no int,
+    foreign key(Roll_no) references Student(Roll _no)
+);
+```
