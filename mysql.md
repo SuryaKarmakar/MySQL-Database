@@ -356,3 +356,8 @@ Example: Write a query in SQL which select the names of those students whose cou
 ```sql
 Select name from student where rno in(select Roll_no from S_course where cname='BBA');
 ```
+
+- String Functions in SQL:
+
+1. string is traditionally a sequence of characters, either as a literal constant or as some kind of variable. The latter may allow its elements to be mutated and/or the length changed, or it may be fixed (after creation).
+2. A string is generally understood as a data type and is often implemented as an array of bytes (or words) that stores a sequence of elements, typically characters, using some character encoding.
