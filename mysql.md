@@ -276,3 +276,20 @@ Example:
 ```sql
 select distinct age from student;
 ```
+
+- Views in SQL:
+
+A view is a virtual table based on the result of a SELECT query. It allows you to simplify cor queries, encapsulate logic, and present a subset or transformation of the data to users wit exposing the underlying table structure.
+
+Syntax:
+
+CREATE VIEW view_name AS SELECT columnl, column2, ...
+FROM table_name WHERE condition;
+
+Example:
+
+```sql
+create view studentview as select name, age from student where age=23;
+
+select * from studentview;
+```
