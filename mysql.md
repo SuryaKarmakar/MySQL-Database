@@ -293,3 +293,27 @@ create view studentview as select name, age from student where age=23;
 
 select * from studentview;
 ```
+
+- Group by And Having Clause:
+
+The GROUP BY clause is a SQL command that is used to group rows that have the same values. The GROUP BY clause is used in the SELECT statement.
+
+Syntax:
+
+SELECT statements...
+GROUP BY column_name1, column_name2,...
+HAVING condition;
+
+Example:
+
+```sql
+Select * from Student group by age;
+```
+
+HAVING: it is used to restrict the rows affected by the GROUP BY clause. It is similar to the WHERE clause.
+
+Example:
+
+```sql
+Select * from Student group by age having age=34;
+```
