@@ -319,3 +319,58 @@ END LOOP;
 
 END;
 ```
+
+- Arrays in PLSQL:
+
+The PL/SQL programming language provides a data structure called the VARRAY, which can store a fixed-size sequential collection of elements of the same type. A varray is used to store an ordered collection of data. All varrays consist of contiguous memory locations. The lowest address corresponds to the first element and the highest address to the last element.
+
+Creating a Varray Type
+
+A varray type is created with the CREATE TYPE statement. You must specify the maximum size and the type of elements stored in the varray.
+
+Syntax
+CREATE OR REPLACE TYPE varray_type_name IS VARRAY(n) of <element_type>
+Where
+
+1. varray_type_name is a valid attribute name, on is the number of elements (maximum) in the varray,
+2. element_type is the data type of the elements of the array.
+
+Example
+
+TYPE namearray IS VARRAY(5) OF VARCHAR2(10);
+
+Type grades IS VARRAY(5) OF INTEGER;
+
+```sql
+DECLARE
+
+type namesarray IS VARRAY(5) OF VARCHAR2(10);
+
+type grades IS VARRAY(5) OF INTEGER;
+
+names namesarray;
+
+marks grades;
+
+total integer;
+
+BEGIN
+
+names:= namesarray('Kavita', 'Pritam', 'Ayan', 'Rishav',
+
+'Aziz');
+
+marks:= grades(98, 97, 78, 87, 92);
+
+total := names.count;
+
+dbms_output.put_line('Total '|| total || 'Students');
+
+FOR i in 1 .. total LOOP
+
+dbms_output.put_line('Student:' || names(i) ||'Marks:' || marks(i));
+
+END LOOP;
+
+END;
+```
