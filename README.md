@@ -321,3 +321,94 @@ SELECT s.name, c.name
 FROM student2 s
 RIGHT JOIN course c ON s.roll_no = c.roll_no;
 ```
+
+```sql
+USE muj;
+DROP TABLE student;
+
+CREATE TABLE student(
+id INT PRIMARY KEY,
+    age INT,
+    ph_no VARCHAR(10)
+);
+
+INSERT INTO student
+VALUES
+(1, 25, "9007505188"),
+(2, 26, "9007505177"),
+(3, 25, "9007505166");
+
+SELECT * FROM student;
+
+-- ALTER TABLE statement is used to add, delete or modify columns in an existing table.
+-- ALTER TABLE statement is also used to add and drop various constraints on an existing table.
+
+-- To add a column in a table:
+ALTER TABLE student ADD COLUMN name VARCHAR(20);
+
+-- To drop a column:
+ALTER TABLE student DROP COLUMN age;
+
+-- To chnage / modify the data type of column in a table:
+ALTER TABLE student MODIFY COLUMN marks VARCHAR(10);
+
+-- rename column name
+ALTER TABLE student RENAME COLUMN ph_no TO phone_no;
+
+-- UPDATE statement is used to modify the existing record is a table.
+UPDATE student SET name = "abc" WHERE id = 1;
+UPDATE student SET name = "xyz" WHERE id = 2;
+UPDATE student SET name = "pqr" WHERE id = 3;
+
+-- DELETE statement is used to delete existing records in a table.
+DELETE FROM student WHERE id = 3;
+
+-- DROP TABLE statement is used to drop an existing table in a database.
+DROP TABLE student;
+
+-- DISTINCT statement is used to retrive unique values from a specific column in a table.
+SELECT DISTINCT age FROM student;
+
+-- A view is a virtual table based on the result of a SELECT query.
+-- It allows you to simplify complex queries, encapsulate logic, and present a subset or transformation of the data to ysers without exposing the underlying table structure.
+CREATE VIEW student_view as SELECT * FROM student;
+CREATE OR REPLACE VIEW student_view as SELECT id, ph_no FROM student WHERE age = 25;
+
+SELECT * FROM student_view;
+
+-- GROUP BY clause is a SQL command that is used to group rows that have the same values.
+SELECT age, COUNT(*) AS student_count FROM student GROUP BY age;
+
+SELECT age, COUNT(*) AS student_count FROM student GROUP BY age HAVING age = 25; -- grouping age having only 25.
+
+-- A FOREIGN KEY is a field (or collection of fields) in one table, that refers to the PRIMARY KEY in another table.
+-- The table with the foreign key is called the child table, and the table with the primary key is called the referenced or parent table.
+CREATE TABLE course(
+cid INT PRIMARY KEY,
+    cname VARCHAR(20),
+    sid INT,
+    FOREIGN KEY(sid) REFERENCES student(id) ON DELETE CASCADE
+);
+
+INSERT INTO course
+VALUES
+(1, "DBMS", 1),
+(2, "OPPS", 2),
+(3, "C++", 3);
+
+SELECT * FROM course;
+
+SELECT name, cname FROM student as st, course as c WHERE st.id = c.sid;
+-- OR
+SELECT st.name, c.cname  FROM student AS st
+INNER JOIN course AS c
+ON st.id = c.sid;
+
+-- A subquery, also known as a nested query or inner query, is a query embedded within another query.
+-- It can be used to retrieve data that will be used in the main query as a condition to further restrict the data to be retrieved.
+-- Subqueries can be used in various parts of a SQL statement, including the SELECT, FROM, WHERE, and HAVING clauses.
+
+SELECT name FROM student WHERE id = (SELECT sid FROM course WHERE cname = "OPPS");
+
+SELECT name FROM student WHERE id NOT IN(SELECT sid FROM course WHERE cname = "OPPS");
+```
