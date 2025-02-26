@@ -496,3 +496,105 @@ dbms_output.put_line(INSTR (greetings, 'e'));
 
 END;
 ```
+
+- Procedures in PL/Sql:
+
+The PL/SQL stored procedure or simply a procedure is a PL/SQL block which performs one or more specific tasks. It is just like procedures in other programming languages.
+
+The procedure contains a header and a body.
+
+1. Header: The header contains the name of the procedure and the parameters or variables passed to the procedure.
+2. Body: The body contains a declaration section, execution section and exception section similar to a general PL/SQL block.
+
+Parameters in Procedure
+
+When you want to create a procedure or function, you have to define parameters There is three ways to pass parameters in procedure:
+
+1. IN :An IN parameter lets you pass a value to the subprogram. It is a read-only parameter. Inside the subprogram, an IN parameter acts like a constant. It cannot be assigned a value. You can pass a constant, literal, initialized variable, or expression as an IN parameter. You can also initialize it to a default value; however, in that case, it is omitted from the subprogram call. It is the default mode of parameter passing. Parameters are passed by reference.
+
+2. OUT: An OUT parameter returns a value to the calling program. Inside the subprogram, an OUT parameter acts like a variable. You can change its value and reference the value after assigning it. The actual parameter must be variable and it is passed by value.
+
+3. IN OUT: An IN OUT parameter passes an initial value to a subprogram and returns an updated value to the caller. It can be assigned a value and the value can be read.The actual parameter corresponding to an IN OUT formal parameter must be a variable, not a constant or an expression. Formal parameter must be assigned a value. Actual parameter is passed by value.
+
+Create Procedure
+
+Example:
+
+we are going to insert record in user table. So you need to create user table first.
+
+Table Creation:
+
+```sql
+create table user(id number(10) primary key, name varchar2(100));
+```
+
+Procedure Code:
+
+```sql
+DECLARE
+procedure INSERTUSER1(id IN NUMBER, name IN VARCHAR)
+IS
+begin
+
+insert into user1 values(id,name);
+
+end; begin
+
+INSERTUSER1(101, 'Rahul');
+
+dbms_output.put_line('record inserted successfully');
+
+end;
+```
+
+Example to demonstrate OUT
+
+```sql
+DECLARE a number; b number; c number;
+
+PROCEDURE findMin(x IN number, y IN number, z OUT number) IS BEGIN
+
+IF X< y THEN
+
+Z:= x;
+
+ELSE
+
+Z:= y;
+
+END IF;
+
+END;
+
+BEGIN a:= 23; b:= 45;
+
+findMin(a, b, c);
+
+dbms_output.put_line(' Minimum of (23, 45) : ' || c);
+
+END;
+```
+
+Example to demonstrate IN Out
+
+```sql
+DECLARE a number;
+
+PROCEDURE squareNum(x IN OUT number) IS
+
+BEGIN
+
+x:= x * x;
+
+END;
+
+BEGIN
+
+a:= 23;
+
+squareNum(a);
+
+dbms_output.put_line(' Square of (23): ' || a);
+
+END;
+```
