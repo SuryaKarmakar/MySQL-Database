@@ -160,3 +160,19 @@ WHERE CustomerName LIKE 'a\_%' - Finds any values that start with "a" and are at
 WHERE CustomerName LIKE 'a\_\_%' - Finds any values that start with "a" and are at least 3 characters in length
 
 WHERE CustomerName LIKE 'a%o' - Finds any values that start with "a" and ends with "o"
+
+- Between Operator:
+
+The BETWEEN operator selects values within a given range. The values can be numbers, text, or dates. The BETWEEN operator is inclusive: begin and end values are included.
+
+Syntax:
+
+SELECT column_name
+FROM table name
+WHERE column_name BETWEEN valuel AND value2;
+
+Example:
+
+```sql
+Select * from Student where marks between 78 and 87;
+```
