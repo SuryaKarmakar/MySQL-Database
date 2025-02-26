@@ -176,3 +176,43 @@ Example:
 ```sql
 Select * from Student where marks between 78 and 87;
 ```
+
+- Alter Command:
+
+The ALTER TABLE statement is used to add, delete, or modify columns in an existing table. The ALTER TABLE statement is also used to add and drop various constraints on an existing table.
+
+Syntax: To add a column in a table:
+
+ALTER TABLE table_name
+ADD column_name datatype;
+
+Example:
+
+```sql
+ALTER TABLE Student
+Add column marks integer;
+```
+
+Syntax :To drop a column
+
+ALTER TABLE table_name
+DROP COLUMN column_name;
+
+Example:
+
+```sql
+ALTER TABLE Student
+DROP COLUMN Age;
+```
+
+Syntax :to change /modify the data type of column in a table
+
+ALTER TABLE table_name
+MODIFY COLUMN coLumn_name datatype;
+
+Example:
+
+```sql
+ALTER TABLE Student
+MODIFY COLUMN Age VARCHAR(10);
+```
