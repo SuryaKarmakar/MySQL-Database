@@ -133,3 +133,30 @@ Example:
 select min(age) from Student;
 Select max(age) from Student;
 ```
+
+- Like Operator:
+
+The LIKE operator is used in a WHERE clause to search for a specified pattern in a column. There are two wildcards often used in conjunction with the LIKE operator:
+
+1. The percent sign (%) represents zero, one, or multiple characters.
+2. The underscore sign (\_) represents one, single character Syntax.
+
+Syntax:
+
+SELECT coLumnl, column, ...
+FROM table name
+WHERE coLumnN LIKE pattern;
+
+WHERE CustomerName LIKE 'a%' - Finds any values that start with "a"
+
+WHERE CustomerName LIKE '%а' - Finds any values that end with "a"
+
+WHERE CustomerName LIKE '%or%' - Finds any values that have "or" in any position
+
+WHERE CustomerName LIKE '\_r%' - Finds any values that have "r" in the second position
+
+WHERE CustomerName LIKE 'a\_%' - Finds any values that start with "a" and are at least 2 characters in length
+
+WHERE CustomerName LIKE 'a\_\_%' - Finds any values that start with "a" and are at least 3 characters in length
+
+WHERE CustomerName LIKE 'a%o' - Finds any values that start with "a" and ends with "o"
