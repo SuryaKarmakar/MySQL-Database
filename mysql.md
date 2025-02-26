@@ -337,3 +337,22 @@ Create table S_course(
     foreign key(Roll_no) references Student(Roll _no)
 );
 ```
+
+- SubQueries in SQL:
+
+1. A subquery, also known as a nested query or inner query, is a query embedded within another query.
+2. It can be used to retrieve data that will be used in the main query as a condition to further restrict the data to be retrieved.
+3. Subqueries can be used in various parts of a SQL statement, including the SELECT, FROM, WHERE, and HAVING clauses.
+
+Syntax:
+
+SELECT column1, column2, ...
+FROM table_name
+WHERE column_name operator
+(SELECT column_name FROM another_table WHERE condition);
+
+Example: Write a query in SQL which select the names of those students whose course name is BBA.
+
+```sql
+Select name from student where rno in(select Roll_no from S_course where cname='BBA');
+```
