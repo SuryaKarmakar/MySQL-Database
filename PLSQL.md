@@ -38,3 +38,29 @@ END;
 4. CHAR: Fixed-length character string with maximum size of 32,767 bytes
 
 5. VARCHAR2: Variable-length character string with maximum size of 32,767 bytes
+
+- Variable Declaration:
+
+1. PL/SQL variables must be declared in the declaration section or in a package as a global variable. When you declare a variable, PL/SQL allocates memory for the variable's value and the storage location is identified by the variable name.
+2. The syntax for declaring a variable is - variable_name [CONSTANT] datatype [NOT NULL] [:= | DEFAULT initial_value]
+
+Example:
+
+Sales number (10,2);
+
+Name varchar2(10);
+
+A integer: =7;
+
+```sql
+DECLARE
+	a integer := 10; b integer := 20;
+	c integer;
+	f real;
+BEGIN
+	C := a + b;
+	dbms_output.put_line('Value of c: ' || c);
+	f := 70.0/3.0;
+	dbms_output.put_line('Value of f: ' || f);
+END;
+```
