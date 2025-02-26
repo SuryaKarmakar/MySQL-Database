@@ -380,3 +380,44 @@ The most commonly used SQL aggregate functions are:
 SELECT MIN(Age)
 FROM Student;
 ```
+
+- Joins:
+
+A JOIN clause is used to combine rows from two or more tables, based on a related column between them.
+
+- EQUI JOIN:
+
+To retrieve values from two tables.
+
+- Inner Join:
+
+The INNER JOIN keyword selects all rows from both the tables as long as the condition is satisfied. This keyword will create the result-set by combining all rows from both the tables where the condition satisfies i.e value of the common field will be the same.
+
+Syntax:
+
+SELECT table1.column1,table1.column2,table2.column1,....
+FROM table1
+INNER JOIN table2
+ON table1.matching_column = table2.matching_column;
+
+- Left Outer Join:
+
+LEFT JOIN returns all the rows of the table on the left side of the join and matches rows for the table on the right side of the join. For the rows for which there is no matching row on the right side, the result-set will contain null.
+
+Syntax:
+
+SELECT table1.column1,table1.column2,table2.column1,....
+FROM table1
+LEFT JOIN table2
+ON table1.matching_column = table2.matching_column;
+
+- Full outer Join:
+
+FULL JOIN creates the result-set by combining results of both LEFT JOIN and RIGHT JOIN. The result-set will contain all the rows from both tables. For the rows for which there is no matching, the result-set will contain NULL values
+
+Syntax:
+
+SELECT table1.column1,table1.column2,table2.column1,....
+FROM table1
+FULL JOIN table2
+ON table1.matching_column = table2.matching_column;
