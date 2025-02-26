@@ -223,3 +223,54 @@ BEGIN
   END CASE;
 END;
 ```
+
+- LOOPS in PL/SQL:
+
+A loop statement allows us to execute a statement or group of statements multiple times
+
+The loops in PL/SQL are:
+
+1. PL/SQL BASIC LOOP: In this loop structure, sequence of statements is enclosed between the LOOP and the END LOOP statements. At each iteration, the sequence of statements is executed and then control resumes at the top of the loop.
+
+2. PL/SQL WHILE LOOP: Repeats a statement or group of statements while a given condition is true.
+   It tests the condition before executing the loop body.
+
+3. PL/SQL FOR LOOP: Execute a sequence of statements multiple times and abbreviates the code that manages the loop variable.
+
+- Basic loop:
+
+Basic loop structure encloses sequence of statements in between the LOOP and END LOOP statements. With each iteration, the sequence of statements is executed and then control resumes at the top of the loop.
+
+Syntax:
+
+LOOP
+Sequence of statements;
+END LOOP;
+
+```sql
+DECLARE
+
+x number:= 10;
+
+BEGIN
+
+LOOP
+
+dbms_output.put_line(x);
+
+x:=x+ 10;
+
+IF x > 50 THEN
+
+exit;
+
+END IF;
+
+END LOOP;
+
+-- after exit, control resumes here
+
+dbms_output.put_line('After Exit x is:' || x);
+
+END;
+```
