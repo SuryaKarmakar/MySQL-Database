@@ -361,3 +361,22 @@ Select name from student where rno in(select Roll_no from S_course where cname='
 
 1. string is traditionally a sequence of characters, either as a literal constant or as some kind of variable. The latter may allow its elements to be mutated and/or the length changed, or it may be fixed (after creation).
 2. A string is generally understood as a data type and is often implemented as an array of bytes (or words) that stores a sequence of elements, typically characters, using some character encoding.
+
+- Aggregate Functions:
+
+The most commonly used SQL aggregate functions are:
+
+1. MIN() - returns the smallest value within the selected column
+
+2. MAX() - returns the largest value within the selected column
+
+3. COUNT() - returns the number of rows in a set
+
+4. SUM() - returns the total sum of a numerical column
+
+5. AVG() - returns the average value of a numerical column
+
+```sql
+SELECT MIN(Age)
+FROM Student;
+```
