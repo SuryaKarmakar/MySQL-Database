@@ -275,11 +275,11 @@ Creating a Varray Type
 
 A varray type is created with the CREATE TYPE statement. You must specify the maximum size and the type of elements stored in the varray.
 
-Syntax
-CREATE OR REPLACE TYPE varray_type_name IS VARRAY(n) of <element_type>
-Where
+Syntax:
 
-1. varray_type_name is a valid attribute name, on is the number of elements (maximum) in the varray,
+CREATE OR REPLACE TYPE varray_type_name IS VARRAY(n) of <element_type>
+
+1. varray_type_name is a valid attribute name, on is the number of elements (maximum) in the varray.
 2. element_type is the data type of the elements of the array.
 
 Example
@@ -290,39 +290,23 @@ Type grades IS VARRAY(5) OF INTEGER;
 
 ```sql
 DECLARE
-
-type namesarray IS VARRAY(5) OF VARCHAR2(10);
-
-type grades IS VARRAY(5) OF INTEGER;
-
-names namesarray;
-
-marks grades;
-
-total integer;
-
+  type namesarray IS VARRAY(5) OF VARCHAR2(10);
+  type grades IS VARRAY(5) OF INTEGER;
+  names namesarray;
+  marks grades;
+  total integer;
 BEGIN
-
-names:= namesarray('Kavita', 'Pritam', 'Ayan', 'Rishav',
-
-'Aziz');
-
-marks:= grades(98, 97, 78, 87, 92);
-
-total := names.count;
-
-dbms_output.put_line('Total '|| total || 'Students');
-
-FOR i in 1 .. total LOOP
-
-dbms_output.put_line('Student:' || names(i) ||'Marks:' || marks(i));
-
-END LOOP;
-
+  names := namesarray('Kavita', 'Pritam', 'Ayan', 'Rishav', 'Aziz');
+  marks := grades(98, 97, 78, 87, 92);
+  total := names.count;
+  dbms_output.put_line('Total '|| total || 'Students');
+  FOR i in 1 .. total LOOP
+    dbms_output.put_line('Student:' || names(i) || ', ' ||'Marks:' || marks(i));
+  END LOOP;
 END;
 ```
 
-- Strings in PLSQL:
+## Strings in PLSQL:
 
 The string in PL/SQL is actually a sequence of characters with an optional size specification. The characters could be numeric, letters, blank, special characters or a combination of all. PL/SQL offers three kinds of strings —
 
@@ -336,37 +320,24 @@ The string in PL/SQL is actually a sequence of characters with an optional size 
 
 ```sql
 DECLARE
-
-name varchar2(20);
-
-company varchar2(30);
-
-introduction clob;
-
-choice char (1);
-
+  name varchar2(20);
+  company varchar2(30);
+  introduction clob;
+  choice char(1);
 BEGIN
-
-name := 'John Smith';
-
-company := 'Infotech';
-
-introduction:= 'Hello! I"m John Smith from Infotech.';
-
-choice := 'y';
-
-IF choice = 'y' THEN
-
-dbms_output.put_line(name);
-
-dbms_output.put_line(company);
-
-dbms_output.put_line(introduction);
-
+  name := 'John Smith';
+  company := 'Infotech';
+  introduction := 'Hello! I"m John Smith from Infotech.';
+  choice := 'y';
+  IF choice = 'y' THEN
+    dbms_output.put_line(name);
+    dbms_output.put_line(company);
+    dbms_output.put_line(introduction);
 END IF;
-
 END;
 ```
+
+## Function In String:
 
 ASCII(x) - Returns the ASCII value of the character x.
 
@@ -384,11 +355,17 @@ LENGTH(x) - Returns the number of characters in x.
 
 LENGTHB(x) - Returns the length of a character string in bytes for single byte character set.
 
+UPPER(x) - Converts the letters in x to uppercase and returns that string.
+
 LOWER(x) - Converts the letters in x to lowercase and returns that string.
 
-LPAD(x, width, [pad _string]) - Pads x with spaces to the left, to bring the total length of the string up to width characters.
+LPAD(x, width [, pad_string]) - Pads x with spaces to the left, to bring the total length of the string up to width characters.
 
-LTRIM(x L, [trim_string]) - Trims characters from the left of x.
+RPAD(x, width [, pad_string]) - Pads x to the right.
+
+LTRIM(x [, trim_string]) - Trims characters from the left of x.
+
+RTRIM(x [, trim_string]) - Trims x from the right.
 
 NANVL(x, value) - Returns value if x matches the NaN special value (not a number), otherwise x is returned.
 
@@ -400,51 +377,27 @@ NLS_UPPER(x) - Same as the UPPER function except that it can use a different sor
 
 REPLACE(x, search_string, replace_string) - Searches x for search_string and replaces it with replace_string.
 
-RPAD(x, width [, pad_string]) - Pads x to the right.
-
-RTRIM(x [, trim_string]) - Trims x from the right.
-
 SUBSTR(x, start [, length]) - Returns a substring of x that begins at the position specified by start. An optional length for the substring may be supplied.
 
 SUBSTRB(x) - Same as SUBSTR except that the parameters are expressed in bytes instead of characters for the single-byte character systems.
 
-TRIM([trim_char] FROM x) - Trims characters from the left and right of x.
-
-UPPER(x) - Converts the letters in x to uppercase and returns that string.
+TRIM([trim_char FROM] x) - Trims characters from the left and right of x.
 
 ```sql
 DECLARE
-
-greetings varchar2(11) := 'hello world';
-
-BEGIN dbms_output.put_line(UPPER(greetings));
-
-dbms_output.put_line(LOWER(greetings));
-
-dbms_output.put_line(INITCAP(greetings));
-
-/* retrieve the first character in the string */ dbms_output.put_line (SUBSTR (greetings, 1, 1));
-
-/* retrieve the last character in the string */ dbms_output.put_line ( SUBSTR (greetings, -1, 1));
-
-/* retrieve five characters,
-
-starting from the seventh position. */
-
-dbms_output.put_line(SUBSTR (greetings, 7, 5));
-
-/* retrieve the remainder of the string, starting from the second position.*/
-
-dbms_output.put_line( SUBSTR (greetings, 2));
-
-/* find the location of the first "e" */
-
-dbms_output.put_line(INSTR (greetings, 'e'));
-
+  greetings varchar2(11) := 'hello world';
+BEGIN
+  dbms_output.put_line(UPPER(greetings));
+  dbms_output.put_line(LOWER(greetings));
+  dbms_output.put_line(INITCAP(greetings));
+  dbms_output.put_line(SUBSTR(greetings, 1, 1));
+  dbms_output.put_line(SUBSTR(greetings, -1, 1));
+  dbms_output.put_line(SUBSTR(greetings, 7, 5));
+  dbms_output.put_line(INSTR(greetings, 'e'));
 END;
 ```
 
-- Procedures in PL/Sql:
+## Procedures in PL/Sql:
 
 The PL/SQL stored procedure or simply a procedure is a PL/SQL block which performs one or more specific tasks. It is just like procedures in other programming languages.
 
