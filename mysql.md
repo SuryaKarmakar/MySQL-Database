@@ -406,11 +406,11 @@ Select name from student where rno in(select Roll_no from S_course where cname='
 
 ## String Functions in SQL:
 
-1. string is traditionally a sequence of characters, either as a literal constant or as some kind of variable. The latter may allow its elements to be mutated and/or the length changed, or it may be fixed (after creation).
+string is traditionally a sequence of characters, either as a literal constant or as some kind of variable. The latter may allow its elements to be mutated and/or the length changed, or it may be fixed (after creation).
 
-2. A string is generally understood as a data type and is often implemented as an array of bytes (or words) that stores a sequence of elements, typically characters, using some character encoding.
+A string is generally understood as a data type and is often implemented as an array of bytes (or words) that stores a sequence of elements, typically characters, using some character encoding.
 
-3. substr() - Returns a portion of starting at position and char long.
+1. substr() - Returns a portion of starting at position and char long.
 
 ```sql
 SELECT SUBSTR('oracle',2,3) FROM dual;
