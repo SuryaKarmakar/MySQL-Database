@@ -189,7 +189,7 @@ BEGIN
 END;
 ```
 
-## LOOPS in PL/SQL:
+## LOOPS In PL/SQL:
 
 A loop statement allows us to execute a statement or group of statements multiple times
 
@@ -197,12 +197,11 @@ The loops in PL/SQL are:
 
 1. PL/SQL BASIC LOOP: In this loop structure, sequence of statements is enclosed between the LOOP and the END LOOP statements. At each iteration, the sequence of statements is executed and then control resumes at the top of the loop.
 
-2. PL/SQL WHILE LOOP: Repeats a statement or group of statements while a given condition is true.
-   It tests the condition before executing the loop body.
+2. PL/SQL WHILE LOOP: Repeats a statement or group of statements while a given condition is true. It tests the condition before executing the loop body.
 
 3. PL/SQL FOR LOOP: Execute a sequence of statements multiple times and abbreviates the code that manages the loop variable.
 
-- Basic loop:
+## Basic loop:
 
 Basic loop structure encloses sequence of statements in between the LOOP and END LOOP statements. With each iteration, the sequence of statements is executed and then control resumes at the top of the loop.
 
@@ -214,78 +213,61 @@ END LOOP;
 
 ```sql
 DECLARE
-
-x number:= 10;
-
+  x number:= 10;
 BEGIN
-
-LOOP
-
-dbms_output.put_line(x);
-
-x:=x+ 10;
-
-IF x > 50 THEN
-
-exit;
-
-END IF;
-
-END LOOP;
-
--- after exit, control resumes here
-
-dbms_output.put_line('After Exit x is:' || x);
-
+  LOOP
+    dbms_output.put_line(x);
+    x := x + 10;
+    IF x > 50 THEN
+      exit;
+    END IF;
+  END LOOP;
+  dbms_output.put_line('After Exit x is: ' || x);
 END;
 ```
 
-- While Loop:
+## While Loop:
 
 A WHILE LOOP statement in PL/SQL programming language repeatedly executes a target statement as long as a given condition is true.
 
 Syntax:
 
-WHILE condition LOOP sequence_of_statements
+WHILE condition LOOP
+sequence_of_statements
 END LOOP;
 
 ```sql
 DECLARE
-
-a number (2) := 10;
-
+  a number(2) := 10;
 BEGIN
-
-WHILE a < 20 LOOP
-
-dbms_output.put_line('value of a:' || a);
-
-a := a + 1;
-
-END LOOP;
-
+  WHILE a < 20 LOOP
+    dbms_output.put_line('value of a: ' || a);
+    a := a + 1;
+  END LOOP;
 END;
 ```
 
-- For Loop:
+## For Loop:
+
+A FOR LOOP is a repetition control structure that allows you to efficiently write a loop that needs to execute a specific number of times.
+
+Syntax:
+
+FOR counter IN initial_value .. final_value LOOP
+sequence_of_statements
+END LOOP;
 
 ```sql
 DECLARE
-
-a number (2);
-
+  a number(2);
 BEGIN
-
-FOR a in 10 .. 20 LOOP
-
-dbms_output.put_line('value of a:' || a);
-
+  FOR a in 10 .. 20 LOOP
+    dbms_output.put_line('value of a: ' || a);
 END LOOP;
-
 END;
 ```
 
-- Arrays in PLSQL:
+## Arrays in PLSQL:
 
 The PL/SQL programming language provides a data structure called the VARRAY, which can store a fixed-size sequential collection of elements of the same type. A varray is used to store an ordered collection of data. All varrays consist of contiguous memory locations. The lowest address corresponds to the first element and the highest address to the last element.
 
