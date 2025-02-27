@@ -231,10 +231,10 @@ Example:
 
 ```sql
 ALTER TABLE Student
-Add column marks integer;
+Add column marks int;
 ```
 
-Syntax :To drop a column
+Syntax: To drop a column
 
 ALTER TABLE table_name
 DROP COLUMN column_name;
@@ -243,10 +243,10 @@ Example:
 
 ```sql
 ALTER TABLE Student
-DROP COLUMN Age;
+DROP COLUMN age;
 ```
 
-Syntax :to change /modify the data type of column in a table
+Syntax: To change or modify the data type of column in a table
 
 ALTER TABLE table_name
 MODIFY COLUMN coLumn_name datatype;
@@ -255,10 +255,10 @@ Example:
 
 ```sql
 ALTER TABLE Student
-MODIFY COLUMN Age VARCHAR(10);
+MODIFY COLUMN age VARCHAR(10);
 ```
 
-- Update:
+## Update:
 
 The UPDATE statement is used to modify the existing records in a table.
 
@@ -274,7 +274,7 @@ Example:
 Update Student set name='Ankita' where name ='Ankit';
 ```
 
-- Delete Command:
+## Delete Command:
 
 The DELETE statement is used to delete existing records in a table.
 
@@ -288,7 +288,7 @@ Example:
 Delete from Student where Roll_no =106;
 ```
 
-- Drop Command:
+## Drop Command:
 
 The DROP TABLE statement is used to drop an existing table in a database.
 
@@ -302,7 +302,7 @@ Example:
 Drop Table Student;
 ```
 
-- Distinct:
+## Distinct:
 
 The SELECT DISTINCT statement is used to retrieve unique values from a specific column in a table. It eliminates duplicate rows and returns only distinct values.
 
@@ -318,7 +318,7 @@ Example:
 select distinct age from student;
 ```
 
-- Views in SQL:
+## Views In SQL:
 
 A view is a virtual table based on the result of a SELECT query. It allows you to simplify cor queries, encapsulate logic, and present a subset or transformation of the data to users wit exposing the underlying table structure.
 
@@ -335,14 +335,14 @@ create view studentview as select name, age from student where age=23;
 select * from studentview;
 ```
 
-- Group by And Having Clause:
+## Group By And Having Clause:
 
 The GROUP BY clause is a SQL command that is used to group rows that have the same values. The GROUP BY clause is used in the SELECT statement.
 
 Syntax:
 
 SELECT statements...
-GROUP BY column_name1, column_name2,...
+GROUP BY column1, column2,...
 HAVING condition;
 
 Example:
@@ -359,7 +359,7 @@ Example:
 Select * from Student group by age having age=34;
 ```
 
-- Foreign Key:
+## Foreign Key:
 
 A FOREIGN KEY is a field (or collection of fields) in one table, that refers to the PRIMARY KEY in another table. The table with the foreign key is called the child table, and the table with the primary key is called the referenced or parent table.
 
