@@ -365,21 +365,27 @@ A FOREIGN KEY is a field (or collection of fields) in one table, that refers to 
 
 Syntax:
 
-Create Table table_name (column 1, column 2....)
+Create Table table_name (column1, column2, ...)
 Foreign key(column_name) References Table Name(column name of Primary key)
 
 Example:
 
 ```sql
-Create table S_course(
-    cid integer primary key,
-    cname char(20),
-    Roll_no int,
-    foreign key(Roll_no) references Student(Roll _no)
+CREATE TABLE student(
+    sid INT PRIMARY KEY,
+    age INT,
+    ph_no VARCHAR(10)
+);
+
+CREATE TABLE course(
+    cid INT PRIMARY KEY,
+    cname VARCHAR(20),
+    sid INT,
+    FOREIGN KEY(sid) REFERENCES student(sid)
 );
 ```
 
-- SubQueries in SQL:
+## SubQueries In SQL:
 
 1. A subquery, also known as a nested query or inner query, is a query embedded within another query.
 2. It can be used to retrieve data that will be used in the main query as a condition to further restrict the data to be retrieved.
@@ -398,12 +404,55 @@ Example: Write a query in SQL which select the names of those students whose cou
 Select name from student where rno in(select Roll_no from S_course where cname='BBA');
 ```
 
-- String Functions in SQL:
+## String Functions in SQL:
 
 1. string is traditionally a sequence of characters, either as a literal constant or as some kind of variable. The latter may allow its elements to be mutated and/or the length changed, or it may be fixed (after creation).
+
 2. A string is generally understood as a data type and is often implemented as an array of bytes (or words) that stores a sequence of elements, typically characters, using some character encoding.
 
-- Aggregate Functions:
+3. substr() - Returns a portion of starting at position and char long.
+
+```sql
+SELECT SUBSTR('oracle',2,3) FROM dual;
+```
+
+2. upper() - Converts to uppercase.
+
+```sql
+SELECT UPPER('pl sql') FROM dual;
+```
+
+3. lower() - Converts to lowwercase.
+
+```sql
+SELECT LOWER('PL SQL') FROM dual;
+```
+
+4. ipad() - Returns left padded to length with the string.
+
+```sql
+SELECT LPAD('LPAD', 15, '*') FROM dual;
+```
+
+5. rpad() - Returns right padded to length with the string.
+
+```sql
+SELECT RPAD('RPAD', 15, '*') FROM dual;
+```
+
+6. ltrim() - Removes blanks at the left end of a string.
+
+```sql
+SELECT LTRIM('          LTRIM') FROM dual;
+```
+
+7. rtrim() - Removes blanks at the right end of a string.
+
+```sql
+SELECT RTRIM('RTRIM         ') FROM dual;
+```
+
+## Aggregate Functions:
 
 The most commonly used SQL aggregate functions are:
 
@@ -418,41 +467,81 @@ The most commonly used SQL aggregate functions are:
 5. AVG() - returns the average value of a numerical column
 
 ```sql
-SELECT MIN(Age)
-FROM Student;
+SELECT MAX(age) FROM student;
+SELECT MIN(age) FROM student;
+SELECT SUM(age) FROM student;
+SELECT AVG(age) FROM student;
+SELECT COUNT(*) FROM student;
 ```
 
-- Joins:
+## Joins:
 
 A JOIN clause is used to combine rows from two or more tables, based on a related column between them.
 
-- EQUI JOIN:
+## EQUI JOIN:
 
 To retrieve values from two tables.
 
-- Inner Join:
+```sql
+SELECT *
+FROM student AS s
+JOIN course AS c
+ON c.roll_no = s.roll_no;
+
+SELECT s.name, c.name
+FROM student AS s
+JOIN course AS c
+ON c.roll_no = s.roll_no;
+```
+
+## Inner Join:
 
 The INNER JOIN keyword selects all rows from both the tables as long as the condition is satisfied. This keyword will create the result-set by combining all rows from both the tables where the condition satisfies i.e value of the common field will be the same.
 
 Syntax:
 
-SELECT table1.column1,table1.column2,table2.column1,....
+SELECT table1.column1, table1.column2, table2.column1, ...
 FROM table1
 INNER JOIN table2
 ON table1.matching_column = table2.matching_column;
 
-- Left Outer Join:
+```sql
+SELECT c.c_id, c.name, s.name, s.age
+FROM student AS s
+INNER JOIN course AS c
+ON c.roll_no = s.roll_no;
+```
+
+## Left Outer Join:
 
 LEFT JOIN returns all the rows of the table on the left side of the join and matches rows for the table on the right side of the join. For the rows for which there is no matching row on the right side, the result-set will contain null.
 
 Syntax:
 
-SELECT table1.column1,table1.column2,table2.column1,....
+SELECT table1.column1, table1.column2, table2.column1, ...
 FROM table1
 LEFT JOIN table2
 ON table1.matching_column = table2.matching_column;
 
-- Full outer Join:
+```sql
+SELECT s.name, c.name
+FROM student AS s -- left table
+LEFT JOIN course AS c -- right table
+ON s.roll_no = c.roll_no;
+```
+
+## Right Outer Join:
+
+RIGHT OUTER JOIN: right join returns all the rows of the table on the right side of the join and matching rows for the table on the left of the join. it is very similar to LEFT JOIN for the rows for which there is no matching row on the left side, the result-set will contain null.
+
+```sql
+SELECT s.name, c.name
+FROM student AS s
+RIGHT JOIN course AS c
+ON s.roll_no = c.roll_no;
+```
+
+## Full outer Join:
 
 FULL JOIN creates the result-set by combining results of both LEFT JOIN and RIGHT JOIN. The result-set will contain all the rows from both tables. For the rows for which there is no matching, the result-set will contain NULL values
 
@@ -462,3 +551,19 @@ SELECT table1.column1,table1.column2,table2.column1,....
 FROM table1
 FULL JOIN table2
 ON table1.matching_column = table2.matching_column;
+
+```sql
+SELECT student2.name, course.name
+FROM student2
+FULL JOIN course
+ON student2.roll_no = course.roll_no;
+
+-- uisng both join to make full join.
+SELECT s.name, c.name
+FROM student2 s
+LEFT JOIN course c ON s.roll_no = c.roll_no
+UNION
+SELECT s.name, c.name
+FROM student2 s
+RIGHT JOIN course c ON s.roll_no = c.roll_no;
+```
