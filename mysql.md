@@ -1,5 +1,41 @@
 # MySQL-Database
 
+## SQL(Structured Query Language):
+
+SQL is a standard language for storing, manipulating and retrieving data in database.
+
+SQL commands are instruction. it is used to communicate with the database. it is also used to perform various taska like create a table, add data to tables, drop the table, modify the table, set permission for users etc.
+
+## SQL Commands:
+
+- DDL
+
+1. Create
+2. Drop
+3. Alter
+4. Truncate
+
+- DML
+
+1. Insert
+2. Update
+3. Delete
+
+- DCL
+
+1. Grant
+2. Revoke
+
+- TCL
+
+1. Commit
+2. Rollback
+3. SavePoint
+
+- DQL
+
+1. Select
+
 ## Data Types in SQL:
 
 SQL Data Type is an attribute that specifies the type of data of any object. Each column, variable and expression has a related data type in SQL. You can use these data types while creating your tables.
@@ -16,29 +52,17 @@ SQL Data Type is an attribute that specifies the type of data of any object. Eac
 
 6. FLOAT(n) - Floating precision number data from -1.79E + 308 to 1.79E + 308.The n parameter indicates whether the field should hold 4 or 8 bytes. FLOAT(24) holds a 4-byte field and FLOAT(53) holds an 8-byte field.
 
-## DDL Commands:
-
-DDL stands for data definition language. DDL Commands deal with the schema, i.e., the table in which our data is stored.
-
-- Commands covered under DDL are:
-
-1. CREATE
-2. ALTER
-3. DROP
-4. TRUNCATE
-5. RENAME
-
-- Create Command:
+## Create Command:
 
 It is used to create a new table in the database.
 
 Syntax: CREATE TABLE TABLE_NAME (COLUMN_NAME DATATYPES);
 
 ```sql
-Create Table Student(Name char(10),Roll_no int Primary key,age int,dob date);
+Create Table Student(Name char(10), Roll_no int Primary key, age int, dob date);
 ```
 
-- Insert Command:
+## Insert Command:
 
 It is used to insert values in a tables.
 
@@ -52,7 +76,7 @@ Insert into Student values('Deepika', 104, 34,'2011-04-27');
 Insert into Student values('Deepika', 105, 24,'1984-04-27');
 ```
 
-- Select Command:
+## Select Command:
 
 It is used to select the attribute based on the condition described by WHERE clause.
 
@@ -63,56 +87,52 @@ FROM TABLES
 WHERE conditions;
 
 ```sql
--- Display the records of employees whose age is greater that 30.
 select * from Student where age > 30;
-
--- Display the records of employees whose Roll_no is 102.
 select * from Student where Roll_no = 102;
 ```
 
-- ORDER BY:
+## ORDER BY:
 
 The ORDER BY keyword is used to sort the result-set in ascending or descending order. The ORDER BY keyword sorts the records in ascending order by default. To sort the records in descending order, use the DESC keyword.
 
 Syntax:
 
-SELECT coLumni, columnz, ...
+SELECT coLumn1, column2, ...
 FROM table_name
-ORDER BY columni, columnz, ... ASC |DESC;
+ORDER BY column1, column2, ... ASC | DESC;
 
 ```sql
 Select * from Student order by age;
 Select * from student order by age desc;
 ```
 
-- AND OR NOT:
+## Logical Operators:
 
-1. The AND and OR operators are used to filter records based on more than one condition.
-2. The AND operator displays a record if all the conditions separated by AND are TRUE.
-3. The OR operator displays a record if any of the conditions separated by OR is TRUE.
-4. The NOT operator displays a record if the condition(s) is NOT TRUE.
+1. The AND operator displays a record if all the conditions separated by AND are TRUE.
+2. The OR operator displays a record if any of the conditions separated by OR is TRUE.
+3. The NOT operator displays a record if the condition(s) is NOT TRUE.
 
 Syntax:
 
-SELECT coLumni, coLumn2, ...
+SELECT column1, column2, ...
 FROM table name
-WHERE conditioni AND condition2 AND condition3;
+WHERE condition1 AND condition2 AND condition3;
 
-SELECT coLumn, coLumn2, ...
+SELECT column1, column2, ...
 FROM table_name
 WHERE condition1 OR condition2 OR condition3;
 
-ELECT columni, column2, ...
+SELECT column1, column2, ...
 FROM table_name
 WHERE NOT condition;
 
 ```sql
 select name, Roll_no from Student where age=34 OR marks=78;
 select name, Roll_no from Student where age=34 And marks=78;
-Select * from Student where not marks=98;
+Select name, Roll_no from Student where not marks=98;
 ```
 
-- Min() and Max() functions:
+## Min() and Max() functions:
 
 1. The MIN() function returns the smallest value of the selected column.
 2. The MAX() function returns the largest value of the selected column.
@@ -134,7 +154,7 @@ select min(age) from Student;
 Select max(age) from Student;
 ```
 
-- Like Operator:
+## Like Operator:
 
 The LIKE operator is used in a WHERE clause to search for a specified pattern in a column. There are two wildcards often used in conjunction with the LIKE operator:
 
@@ -143,9 +163,9 @@ The LIKE operator is used in a WHERE clause to search for a specified pattern in
 
 Syntax:
 
-SELECT coLumnl, column, ...
-FROM table name
-WHERE coLumnN LIKE pattern;
+SELECT column1, column2, ...
+FROM table_name
+WHERE columnN LIKE pattern;
 
 WHERE CustomerName LIKE 'a%' - Finds any values that start with "a"
 
@@ -161,7 +181,28 @@ WHERE CustomerName LIKE 'a\_\_%' - Finds any values that start with "a" and are 
 
 WHERE CustomerName LIKE 'a%o' - Finds any values that start with "a" and ends with "o"
 
-- Between Operator:
+```sql
+SELECT * FROM student WHERE s_name LIKE 'a%';
+SELECT * FROM student WHERE s_name LIKE '%a';
+SELECT * FROM student WHERE s_name LIKE 'a%o';
+SELECT * FROM student WHERE s_name LIKE '%or%';
+```
+
+## IN Operator:
+
+IN operator allows you to specify multiple values in a WHERE clause. IN operator is a shorthand for multiple OR conditions.
+
+Syntax:
+
+SELECT column_name
+FROM table_name
+WHERE column_name IN(value1, value2, ...);
+
+```sql
+SELECT * FROM student WHERE s_name IN('John Doe', 'Alice Smith');
+```
+
+## Between Operator:
 
 The BETWEEN operator selects values within a given range. The values can be numbers, text, or dates. The BETWEEN operator is inclusive: begin and end values are included.
 
@@ -169,7 +210,7 @@ Syntax:
 
 SELECT column_name
 FROM table name
-WHERE column_name BETWEEN valuel AND value2;
+WHERE column_name BETWEEN value1 AND value2;
 
 Example:
 
@@ -177,7 +218,7 @@ Example:
 Select * from Student where marks between 78 and 87;
 ```
 
-- Alter Command:
+## Alter Command:
 
 The ALTER TABLE statement is used to add, delete, or modify columns in an existing table. The ALTER TABLE statement is also used to add and drop various constraints on an existing table.
 
