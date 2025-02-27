@@ -12,9 +12,9 @@ Basic Syntax of PL/SQL which is a block-structured language; this means that the
 
 ```sql
 DECLARE
-	message varchar2(20):= 'Hello World';
+  message VARCHAR2(20) := 'Hello World';
 BEGIN
-	dbms_output.put_line (message);
+  DBMS_OUTPUT.PUT_LINE(message);
 END;
 ```
 
@@ -52,15 +52,16 @@ A integer : = 7;
 
 ```sql
 DECLARE
-	a integer := 10;
-  b integer := 20;
-	c integer;
-	f real;
+  a INTEGER := 10;
+  b INTEGER := 20;
+  c INTEGER;
+  f REAL;
 BEGIN
-	C := a + b;
-	dbms_output.put_line('Value of c: ' || c);
-	f := 70.0/3.0;
-	dbms_output.put_line('Value of f: ' || f);
+  c := a + b;
+  DBMS_OUTPUT.PUT_LINE('Value of c: ' || c);
+
+  f := 70.0 / 3.0;
+  DBMS_OUTPUT.PUT_LINE('Value of f: ' || f);
 END;
 ```
 
@@ -90,11 +91,11 @@ Example: Program to check if then statement
 
 ```sql
 DECLARE
-	a number(2) := 10;
+  a NUMBER(2) := 10;
 BEGIN
-	IF (a < 20) THEN
-	  dbms_output.put_line('a is less than 20');
-	END IF;
+  IF (a < 20) THEN
+    DBMS_OUTPUT.PUT_LINE('a is less than 20');
+  END IF;
 END;
 ```
 
@@ -114,12 +115,12 @@ Example: Program to check if-then-else condition
 
 ```sql
 DECLARE
-  a number(3) := 100;
+  a NUMBER(3) := 100;
 BEGIN
-  IF(a < 20) THEN
-  dbms_output.put_line('a is less than 20 ');
+  IF (a < 20) THEN
+    DBMS_OUTPUT.PUT_LINE('a is less than 20');
   ELSE
-    dbms_output.put_line('a is not less than 20');
+    DBMS_OUTPUT.PUT_LINE('a is not less than 20');
   END IF;
 END;
 ```
@@ -144,16 +145,16 @@ Example:
 
 ```sql
 DECLARE
-  a number(3) := 25;
+  a NUMBER(3) := 25;
 BEGIN
   IF (a = 10) THEN
-    dbms_output.put_line('Value of a is 10' );
-  ELSIF ( a = 20) THEN
-    dbms_output.put_line('Value of a is 20' );
-  ELSIF ( a = 30) THEN
-    dbms_output.put_line('Value of a is 30' );
+    DBMS_OUTPUT.PUT_LINE('Value of a is 10');
+  ELSIF (a = 20) THEN
+    DBMS_OUTPUT.PUT_LINE('Value of a is 20');
+  ELSIF (a = 30) THEN
+    DBMS_OUTPUT.PUT_LINE('Value of a is 30');
   ELSE
-  dbms_output.put_line('None of the values is matching');
+    DBMS_OUTPUT.PUT_LINE('None of the values is matching');
   END IF;
 END;
 ```
@@ -175,16 +176,21 @@ Example:
 
 ```sql
 DECLARE
-  grade char(1) := 'A';
+  grade CHAR(1) := 'A';
 BEGIN
   CASE grade
-    when 'A' then dbms_output.put_line('Excellent');
-    when 'B' then dbms_output.put_line('Very good');
-    when 'C' then dbms_output.put_line('Well done');
-    when 'D' then dbms_output.put_line('You passed');
-    when 'F' then dbms_output.put_line('Better try again');
-    else
-      dbms_output.put_line('No such grade');
+    WHEN 'A' THEN
+      DBMS_OUTPUT.PUT_LINE('Excellent');
+    WHEN 'B' THEN
+      DBMS_OUTPUT.PUT_LINE('Very good');
+    WHEN 'C' THEN
+      DBMS_OUTPUT.PUT_LINE('Well done');
+    WHEN 'D' THEN
+      DBMS_OUTPUT.PUT_LINE('You passed');
+    WHEN 'F' THEN
+      DBMS_OUTPUT.PUT_LINE('Better try again');
+    ELSE
+      DBMS_OUTPUT.PUT_LINE('No such grade');
   END CASE;
 END;
 ```
@@ -213,16 +219,16 @@ END LOOP;
 
 ```sql
 DECLARE
-  x number:= 10;
+  x NUMBER := 10;
 BEGIN
   LOOP
-    dbms_output.put_line(x);
+    DBMS_OUTPUT.PUT_LINE(x);
     x := x + 10;
     IF x > 50 THEN
-      exit;
+      EXIT;
     END IF;
   END LOOP;
-  dbms_output.put_line('After Exit x is: ' || x);
+  DBMS_OUTPUT.PUT_LINE('After Exit x is: ' || x);
 END;
 ```
 
@@ -238,10 +244,10 @@ END LOOP;
 
 ```sql
 DECLARE
-  a number(2) := 10;
+  a NUMBER(2) := 10;
 BEGIN
   WHILE a < 20 LOOP
-    dbms_output.put_line('value of a: ' || a);
+    DBMS_OUTPUT.PUT_LINE('value of a: ' || a);
     a := a + 1;
   END LOOP;
 END;
@@ -259,11 +265,11 @@ END LOOP;
 
 ```sql
 DECLARE
-  a number(2);
+  a NUMBER(2);
 BEGIN
-  FOR a in 10 .. 20 LOOP
-    dbms_output.put_line('value of a: ' || a);
-END LOOP;
+  FOR a IN 10 .. 20 LOOP
+    DBMS_OUTPUT.PUT_LINE('value of a: ' || a);
+  END LOOP;
 END;
 ```
 
@@ -290,18 +296,19 @@ Type grades IS VARRAY(5) OF INTEGER;
 
 ```sql
 DECLARE
-  type namesarray IS VARRAY(5) OF VARCHAR2(10);
-  type grades IS VARRAY(5) OF INTEGER;
+  TYPE namesarray IS VARRAY(5) OF VARCHAR2(10);
+  TYPE grades IS VARRAY(5) OF INTEGER;
   names namesarray;
   marks grades;
-  total integer;
+  total INTEGER;
 BEGIN
   names := namesarray('Kavita', 'Pritam', 'Ayan', 'Rishav', 'Aziz');
   marks := grades(98, 97, 78, 87, 92);
   total := names.count;
-  dbms_output.put_line('Total '|| total || 'Students');
-  FOR i in 1 .. total LOOP
-    dbms_output.put_line('Student:' || names(i) || ', ' ||'Marks:' || marks(i));
+  DBMS_OUTPUT.PUT_LINE('Total ' || total || ' Students');
+
+  FOR i IN 1 .. total LOOP
+    DBMS_OUTPUT.PUT_LINE('Student: ' || names(i) || ', Marks: ' || marks(i));
   END LOOP;
 END;
 ```
@@ -320,20 +327,21 @@ The string in PL/SQL is actually a sequence of characters with an optional size 
 
 ```sql
 DECLARE
-  name varchar2(20);
-  company varchar2(30);
-  introduction clob;
-  choice char(1);
+  name VARCHAR2(20);
+  company VARCHAR2(30);
+  introduction CLOB;
+  choice CHAR(1);
 BEGIN
   name := 'John Smith';
   company := 'Infotech';
-  introduction := 'Hello! I"m John Smith from Infotech.';
+  introduction := 'Hello! I''m John Smith from Infotech.';
   choice := 'y';
+
   IF choice = 'y' THEN
-    dbms_output.put_line(name);
-    dbms_output.put_line(company);
-    dbms_output.put_line(introduction);
-END IF;
+    DBMS_OUTPUT.PUT_LINE(name);
+    DBMS_OUTPUT.PUT_LINE(company);
+    DBMS_OUTPUT.PUT_LINE(introduction);
+  END IF;
 END;
 ```
 
@@ -385,15 +393,15 @@ TRIM([trim_char FROM] x) - Trims characters from the left and right of x.
 
 ```sql
 DECLARE
-  greetings varchar2(11) := 'hello world';
+  greetings VARCHAR2(11) := 'hello world';
 BEGIN
-  dbms_output.put_line(UPPER(greetings));
-  dbms_output.put_line(LOWER(greetings));
-  dbms_output.put_line(INITCAP(greetings));
-  dbms_output.put_line(SUBSTR(greetings, 1, 1));
-  dbms_output.put_line(SUBSTR(greetings, -1, 1));
-  dbms_output.put_line(SUBSTR(greetings, 7, 5));
-  dbms_output.put_line(INSTR(greetings, 'e'));
+  DBMS_OUTPUT.PUT_LINE(UPPER(greetings));
+  DBMS_OUTPUT.PUT_LINE(LOWER(greetings));
+  DBMS_OUTPUT.PUT_LINE(INITCAP(greetings));
+  DBMS_OUTPUT.PUT_LINE(SUBSTR(greetings, 1, 1));
+  DBMS_OUTPUT.PUT_LINE(SUBSTR(greetings, -1, 1));
+  DBMS_OUTPUT.PUT_LINE(SUBSTR(greetings, 7, 5));
+  DBMS_OUTPUT.PUT_LINE(INSTR(greetings, 'e'));
 END;
 ```
 
@@ -425,17 +433,16 @@ we are going to insert record in user table. So you need to create user table fi
 Table Creation:
 
 ```sql
-create table user(id number(10) primary key, name varchar2(100));
+CREATE TABLE user (
+  id NUMBER(10) PRIMARY KEY,
+  name VARCHAR2(100)
+);
+
 ```
 
 Procedure Code:
 
 ```sql
-CREATE TABLE users(
-    id NUMBER(3) PRIMARY KEY,
-    name VARCHAR2(100)
-);
-
 DECLARE
   PROCEDURE INSERTUSER(id IN NUMBER, name IN VARCHAR2) IS
   BEGIN
@@ -446,6 +453,7 @@ BEGIN
   INSERTUSER(101, 'Rahul');
   DBMS_OUTPUT.PUT_LINE('Record inserted successfully');
 END;
+
 ```
 
 Example to demonstrate OUT:
@@ -455,6 +463,7 @@ DECLARE
   a NUMBER;
   b NUMBER;
   c NUMBER;
+
   PROCEDURE findMin(x IN NUMBER, y IN NUMBER, z OUT NUMBER) IS
   BEGIN
     IF x < y THEN
@@ -488,7 +497,6 @@ BEGIN
   squareNum(a);
   DBMS_OUTPUT.PUT_LINE('Square of (23): ' || a);
 END;
-
 ```
 
 ## Functions in PISQL:
@@ -497,86 +505,80 @@ A function is same as a procedure except that it returns a value. Therefore, all
 
 Syntax:
 
-FUNCTION function*name
-[(parameter_name [IN | OUT | IN OUT] type I,...)]
+FUNCTION function_name[(parameter_name [IN | OUT | IN OUT] type [, ...])]
 RETURN return_datatype
 {IS | AS} BEGIN
-< function_body >
-END [function* \_name];
+function_body
+END [function_name];
 
 ```sql
-declare
+DECLARE
+  result NUMBER;
 
-Result number;
+  FUNCTION add_fun(a NUMBER, b NUMBER)
+    RETURN NUMBER
+  IS
+    c NUMBER;
+  BEGIN
+    c := a + b;
+    RETURN c;
+  END add_fun;
 
-function add_fun(a number,b number)
-
-return number as c number;
-
-begin c:=a+b;
-
-return c; end;
-
-Begin
-
-Result := add_fun(10,20);
-
-Dbms_output.put_line('the sum of 10 and 20 is' || result);
-
-End;
+BEGIN
+  result := add_fun(10, 20);
+  DBMS_OUTPUT.PUT_LINE('The sum of 10 and 20 is ' || result);
+END;
 ```
 
-- Cursors in PI/SQl:
+## Cursors In PISQl:
 
 A cursor is used to referred to a program to fetch and process the rows returned by the SQL statement, one at a time. There are two types of cursors:
 
 1. Implicit Cursors
 2. Explicit Cursors
 
-- Implicit Cursor:
+## Implicit Cursor:
 
 The implicit cursors are automatically generated by Oracle while an SQL statement is executed, if you don't use an explicit cursor for the statement. Orcale provides some attributes known as Implicit cursor's attributes to check the status of DML operations. Some of them are: %FOUND, %NOTFOUND, %ROWCOUNT and %ISOPEN.
 
 Example - Implicit Cursor
 
-• First create a table in PI/SQL
+First create a table in PI/SQL:
 
 ```sql
-Create table customers(id int,name varchar(10),age int,salary int);
+CREATE TABLE customers(
+  id INT,
+  name VARCHAR(10),
+  age INT,
+  salary INT
+);
 
-Insert into customers values (101, 'abc', 37,1000);
+INSERT INTO customers (id, name, age, salary)
+VALUES
+(101, 'abc', 10000, 0),
+(102, 'abc', 20000, 0);
 
-Insert into customers values(102, 'abc',47,2000);
 ```
 
 The following program will update the table and increase the salary of each customer by 500 and use the SQL%ROWCOUNT attribute to determine the number of rows affected -
 
 ```sql
 DECLARE
-
-total_rows number (2);
-
+  total_rows NUMBER(2);
 BEGIN
+  UPDATE customers
+  SET salary = salary + 500;
 
-UPDATE customers
-SET salary = salary + 500;
-
-IF sql%notfound THEN
-
-dbms_output.put_line('no customers selected');
-
-ELSIF sql%found THEN
-
-total_rows := sql%rowcount;
-
-dbms_output.put_line(total_rows || 'customers selected');
-
-END IF;
-
+  IF SQL%NOTFOUND THEN
+    DBMS_OUTPUT.PUT_LINE('No customers selected');
+  ELSIF SQL%FOUND THEN
+    total_rows := SQL%ROWCOUNT;
+    DBMS_OUTPUT.PUT_LINE(total_rows || ' customers selected');
+  END IF;
 END;
 ```
 
-- Explicit Cursor:
+## Explicit Cursor:
 
 Explicit cursors are programmer-defined cursors for gaining more control over the context area. An explicit cursor should be defined in the declaration section of the PL/SQL Block. It is created on a SELECT Statement which returns more than one row.
 
@@ -589,60 +591,49 @@ Working with an explicit cursor includes the following steps -
 3. Fetching the cursor for retrieving the data
 4. Closing the cursor to release the allocated memory
 
-Explicit cursor
-
-Declaring the Cursor
+Declaring the Cursor:
 
 Declaring the cursor defines the cursor with a name and the associated SELECT statement. For example -
 
 CURSOR c_customers IS SELECT id, name, address FROM customers;
 
-Opening the Cursor
+Opening the Cursor:
 
 Opening the cursor allocates the memory for the cursor and makes it ready for fetching the rows returned by the SQL statement into it. For example, we will open the above defined cursor as follows -
 
-OPEN \c_customers;
+OPEN c_customers;
 
-Fetching the Cursor
+Fetching the Cursor:
 
 Fetching the cursor involves accessing one row at a time. For example, we will fetch rows from the above-opened cursor as follows -
 
-FETCH \c_customers INTO c_id, c_name, c_addr;
+FETCH c_customers INTO c_id, c_name, c_addr;
 
-Closing the Cursor
+Closing the Cursor:
 
 Closing the cursor means releasing the allocated memory. For example, we will close the above-opened cursor as follows -
 
-CLOSE c customers;
+CLOSE c_customers;
 
 ```sql
 DECLARE
+  c_id   customers.id%type;
+  c_name customers.name%type;
+  c_age  customers.age%type;
 
-c_id customers.id%type;
-
-c_name customers.name%type;
-
-c_age customers.age%type;
-
-CURSOR c_customers is
-
-SELECT id, name, age FROM customers;
-
+  CURSOR c_customers IS
+    SELECT id, name, age
+    FROM customers;
 BEGIN
+  OPEN c_customers;
 
-OPEN c_customers;
+  LOOP
+    FETCH c_customers INTO c_id, c_name, c_age;
+    EXIT WHEN c_customers%NOTFOUND;
 
-LOOP
+    dbms_output.put_line(c_id || ' ' || c_name || ' ' || c_age);
+  END LOOP;
 
-FETCH c_customers into c_id, c_name, c_age;
-
-EXIT WHEN c_customers%notfound;
-
-dbms_output.put_line(c_id ||''|| c_name ||''|| c_age);
-
-END LOOP;
-
-CLOSE c_customers;
-
+  CLOSE c_customers;
 END;
 ```
